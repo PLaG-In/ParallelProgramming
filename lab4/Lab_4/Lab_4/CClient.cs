@@ -10,13 +10,13 @@ namespace Lab_4
     {
         public Thread clientThread;
         private int idClient;
-        private ManualResetEvent mre1 = new ManualResetEvent(false);
+        private AutoResetEvent clientEvent = new AutoResetEvent(false);
         private CBarber barberThread;
 
-        public CClient(int id, CBarber barber, ManualResetEvent MRE)
+        public CClient(int id, CBarber barber, AutoResetEvent evt)
         {
             barberThread = barber;
-            mre1 = MRE;
+            clientEvent = evt;
             idClient = id;
             clientThread = new Thread(new ThreadStart(Shave));
             clientThread.IsBackground = true;
@@ -30,7 +30,7 @@ namespace Lab_4
 
         public void WakeUp()
         {
-            mre1.Set();
+            clientEvent.Set();
         }
 
         void Shave()
@@ -47,8 +47,7 @@ namespace Lab_4
                 Console.WriteLine(clientThread.Name + " встаёт в очередь");
             }
             barberThread.barberShop.GoToQueue(this);
-            mre1.WaitOne();
-            Console.WriteLine(clientThread.Name + " подстригся");
+            clientEvent.WaitOne();
         }
     }
 }

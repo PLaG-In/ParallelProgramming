@@ -1,0 +1,5 @@
+C:\University\ParallelProgramming\ParallelProgramming\lab4\Lab_4\Lab_4\bin\Release\Lab_4.exe.config
+C:\University\ParallelProgramming\ParallelProgramming\lab4\Lab_4\Lab_4\bin\Release\Lab_4.exe
+C:\University\ParallelProgramming\ParallelProgramming\lab4\Lab_4\Lab_4\bin\Release\Lab_4.pdb
+C:\University\ParallelProgramming\ParallelProgramming\lab4\Lab_4\Lab_4\obj\Release\Lab_4.exe
+C:\University\ParallelProgramming\ParallelProgramming\lab4\Lab_4\Lab_4\obj\Release\Lab_4.pdb

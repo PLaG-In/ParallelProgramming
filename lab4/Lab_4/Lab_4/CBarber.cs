@@ -10,21 +10,21 @@ namespace Lab_4
     {
         public CBarbershop barberShop = new CBarbershop();
         private Thread barberThread = Thread.CurrentThread;
-        private ManualResetEvent mre;
-        private static Mutex mtx = new Mutex();
+        private AutoResetEvent barberEvent;
+        //private static Mutex mtx = new Mutex();
         private static Random randomGenerator = new Random();
 
-        public CBarber(ManualResetEvent evt)
+        public CBarber(AutoResetEvent evt)
         {
             barberThread = new Thread(Work);
             Console.WriteLine("Пришёл парикмхер");
-            mre = evt;
+            barberEvent = evt;
             barberThread.Start();
         }
 
         public void WakeUp()
         {   
-            mre.Set();
+            barberEvent.Set();
         }
 
         public void Work()
@@ -33,20 +33,22 @@ namespace Lab_4
             {
                 if (!barberShop.isWork)
                 {
-                    mre.WaitOne();
+                    barberEvent.WaitOne();
+                    Thread.Sleep(1000);
                 }
                 else
                 {
                     if (barberShop.QueueStatus() != 0)
                     {
-                        mtx.WaitOne();
+                        //mtx.WaitOne();
                         CClient client = barberShop.GetFirst();
                         Console.WriteLine(client.clientThread.Name + " стрижётся");
                         Thread.Sleep(randomGenerator.Next(100, 1000));
-                        client.WakeUp();
-                        barberShop.LeaveQueue();
                         CBarbershop.clientsCount++;
-                        mtx.ReleaseMutex();
+                        Console.WriteLine(client.clientThread.Name + " подстригся");
+                        barberShop.LeaveQueue();
+                        client.WakeUp();
+                        //mtx.ReleaseMutex();
                     }
                 }
             }

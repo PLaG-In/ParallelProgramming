@@ -16,3 +16,6 @@ C:\University\ParallelProgramming\lab5\l5\Lab_4\obj\Debug\Lab_4.pdb
 C:\University\ParallelProgramming\lab5\l5\Lab_4\bin\Debug\Lab_4.exe
 C:\University\ParallelProgramming\lab5\l5\Lab_4\bin\Debug\Lab_4.pdb
 C:\University\ParallelProgramming\lab5\l5\Lab_4\obj\Debug\Lab_4.csprojResolveAssemblyReference.cache
+C:\University\ParallelProgramming\ParallelProgramming\lab5\l5\Lab_4\bin\Debug\Lab_4.exe.config
+C:\University\ParallelProgramming\ParallelProgramming\lab5\l5\Lab_4\obj\Debug\Lab_4.exe
+C:\University\ParallelProgramming\ParallelProgramming\lab5\l5\Lab_4\obj\Debug\Lab_4.pdb

@@ -10,12 +10,12 @@ namespace Lab_4
     {
         static void Main()
         {
-            ManualResetEvent evtObj = new ManualResetEvent(false);
+            AutoResetEvent evtObj = new AutoResetEvent(false);
             CBarber barber = new CBarber(evtObj);
             Random randomGenerator = new Random();
             for (int i = 1; i < 26; i++)
             {
-                ManualResetEvent clientEvent = new ManualResetEvent(false);
+                AutoResetEvent clientEvent = new AutoResetEvent(false);
                 CClient client = new CClient(i, barber, clientEvent);
                 Thread.Sleep(randomGenerator.Next(100, 1000));
             }
