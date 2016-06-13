@@ -30,11 +30,13 @@ namespace Lab_4
 
         private int _capacity;
         private int _clientsInside;
+        private bool _isShaving;
        // private int _mealPortions;
         private NamedPipeServerStream pipeServer;
 
         public CBarbershop(int capacity)
         {
+            _isShaving = false;
             _capacity = capacity;
             _clientsInside = 0;
         }
@@ -99,12 +101,13 @@ namespace Lab_4
 
         private void HandleLetMeGo()
         {
-            if (_clientsInside > 1)
+            if (_isShaving)
             {
                 pipeServer.WriteByte((byte)Response.YouMustSit);
             }
             else
             {
+                _isShaving = true;
                 pipeServer.WriteByte((byte)Response.YouCanGo);
             }
         }     
@@ -112,6 +115,7 @@ namespace Lab_4
         private void Goodbye()
         {
             --_clientsInside;
+            _isShaving = false;
             pipeServer.WriteByte((byte)Response.Ok);
         }
 
@@ -124,7 +128,7 @@ namespace Lab_4
             }
             else
             {
-                Console.WriteLine("Клиенты пришли, пора работать");
+                Console.WriteLine("Клиенты есть, работаю");
                 //_mealPortions -= 1;
                 pipeServer.WriteByte((byte)Response.ClientsInside);
             }

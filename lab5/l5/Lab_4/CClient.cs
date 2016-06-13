@@ -41,7 +41,7 @@ namespace Lab_4
                     Console.WriteLine("Встал в очередь");
                     Thread.Sleep(random.Next(1000, 8000));
                     var response = SendCommand(Command.LetMeDoHaircut);
-                    while (response != Response.YouCanGo)
+                    while (response == Response.YouMustSit)
                     {
                         Console.WriteLine("Жду своей очереди...");
                         Thread.Sleep(5000);
